@@ -25,7 +25,7 @@ public:
 
     const T& get() const {
         if (top < 0) {
-            return T();
+            return data[0];
         }
         return data[top];
     }
@@ -33,7 +33,6 @@ public:
     bool isEmpty() const {
         return top == -1;
     }
-
 };
 
 #endif // TSTACK_H
