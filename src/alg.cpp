@@ -59,6 +59,7 @@ std::string infx2pstfx(std::string inf) {
     }
     while (!stack.isEmpty()) {
         postfix += stack.pop();
+        postfix += ' ';
     }
 
     if (!postfix.empty() && postfix.back() == ' ') {
@@ -70,11 +71,12 @@ std::string infx2pstfx(std::string inf) {
 
 int eval(std::string post) {
     TStack<int, 100> stack;
+
     for (size_t i = 0; i < post.size(); ++i) {
         char c = post[i];
-        if (c >= '0' && c <= '9') {
+        if (isdigit(c)) {
             std::string number;
-            while (i < post.size() && (post[i] >= '0' && post[i] <= '9')) {
+            while (i < post.size() && isdigit(post[i])) {
                 number += post[i];
                 ++i;
             }
@@ -99,5 +101,6 @@ int eval(std::string post) {
             }
         }
     }
+
     return stack.pop();
 }
