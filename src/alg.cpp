@@ -37,15 +37,19 @@ std::string infx2pstfx(std::string inf) {
                     break;
 
                 case ')':
-                    while (!stack.isEmpty() && stack.get() != '('){
+                    while (!stack.isEmpty() && stack.get() != '(') {
                         postfix += stack.pop();
                     }
                     postfix += ' ';
                     stack.pop();
                     break;
 
-                case ('+' || '-' || '*' || '/'):
-                    while (!stack.isEmpty() && priority(stack.get()) >= priority(c)) {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    while (!stack.isEmpty() &&
+                    priority(stack.get()) >= priority(c)) {
                         postfix += stack.pop();
                         postfix += ' ';
                     }
