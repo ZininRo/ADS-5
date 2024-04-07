@@ -1,3 +1,6 @@
+#ifndef TSTACK_H_
+#define TSTACK_H_
+
 #include <stdexcept>
 
 template<typename T, int size>
@@ -7,14 +10,14 @@ private:
     int top = 0;
 
 public:
-    void push(const T &met) {
+    void push(const T &item) {
         if (top >= size)
             throw std::overflow_error("Full!");
-        data[top++] = met;
+        data[top++] = item;
     }
 
     T pop() {
-        if (top < 0)
+        if (top <= 0)
             throw std::underflow_error("Empty!");
         return data[--top];
     }
@@ -29,3 +32,5 @@ public:
         return data[top - 1];
     }
 };
+
+#endif // TSTACK_H_
