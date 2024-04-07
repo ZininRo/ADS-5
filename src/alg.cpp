@@ -4,7 +4,7 @@
 #include "tstack.h"
 
 int priority(char op) {
-    switch(op) {
+    switch (op) {
         case '*':
         case '/':
             return 2;
