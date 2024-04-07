@@ -1,10 +1,39 @@
-// Copyright 2021 NNTU-CS
-#ifndef INCLUDE_TSTACK_H_
-#define INCLUDE_TSTACK_H_
+#ifndef TSTACK_H
+#define TSTACK_H
 
-template<typename T, int size>
+template <class T, int size>
 class TStack {
-  // добавьте код стека
+    T data[size];
+    int top;
+
+public:
+    TStack() : top(-1) {}
+
+    void push(const T& value) {
+        if (top >= size - 1) {
+            return;
+        }
+        data[++top] = value;
+    }
+
+    T pop() {
+        if (top < 0) {
+            return T();
+        }
+        return data[top--];
+    }
+
+    const T& get() const {
+        if (top < 0) {
+            return T();
+        }
+        return data[top];
+    }
+
+    bool isEmpty() const {
+        return top == -1;
+    }
+
 };
 
-#endif  // INCLUDE_TSTACK_H_
+#endif // TSTACK_H
