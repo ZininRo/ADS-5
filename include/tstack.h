@@ -17,7 +17,7 @@ class TStack {
      }
 
      T pop() {
-         if (top <= 0){
+         if (top <= 0) {
              throw std::underflow_error("Empty!");
          }
          return data[--top];
