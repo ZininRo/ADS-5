@@ -2,13 +2,13 @@
 #include <string>
 #include "tstack.h"
 
-int priority(char op) {
-    switch(op) {
-        case '*':
-        case '/':
+int priority(char o) {
+    switch (o) {
+        case ('*'):
+        case ('/'):
             return 2;
-        case '+':
-        case '-':
+        case ('+'):
+        case ('-'):
             return 1;
         default:
             return 0;
@@ -37,16 +37,14 @@ std::string infx2pstfx(std::string inf) {
                     break;
 
                 case ')':
-                    while (!stack.isEmpty() && stack.get() != '(')
+                    while (!stack.isEmpty() && stack.get() != '('){
                         postfix += stack.pop();
+                    }
                     postfix += ' ';
                     stack.pop();
                     break;
 
-                case '+':
-                case '-':
-                case '*':
-                case '/':
+                case ('+' || '-' || '*' || '/'):
                     while (!stack.isEmpty() && priority(stack.get()) >= priority(c)) {
                         postfix += stack.pop();
                         postfix += ' ';
@@ -84,7 +82,7 @@ int eval(std::string post) {
         } else if (c != ' ') {
             int operand2 = stack.pop();
             int operand1 = stack.pop();
-            switch(c) {
+            switch (c) {
                 case '+':
                     stack.push(operand1 + operand2);
                     break;
