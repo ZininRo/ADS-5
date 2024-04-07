@@ -1,39 +1,31 @@
-#ifndef TSTACK_H
-#define TSTACK_H
+#include <stdexcept>
 
-template <class T, int size>
+template<typename T, int size>
 class TStack {
+private:
     T data[size];
-    int top;
+    int top = 0;
 
 public:
-    TStack() : top(-1) {}
-
-    void push(const T& value) {
-        if (top >= size - 1) {
-            return;
-        }
-        data[++top] = value;
+    void push(const T &met) {
+        if (top >= size)
+            throw std::overflow_error("Full!");
+        data[top++] = met;
     }
 
     T pop() {
-        if (top < 0) {
-            return T();
-        }
-        return data[top--];
-    }
-
-    const T& get() const {
-        if (top < 0) {
-            return T();
-        }
-        return data[top];
+        if (top < 0)
+            throw std::underflow_error("Empty!");
+        return data[--top];
     }
 
     bool isEmpty() const {
-        return top == -1;
+        return top == 0;
     }
 
+    const T& get() const {
+        if (isEmpty())
+            throw std::underflow_error("Empty!");
+        return data[top - 1];
+    }
 };
-
-#endif // TSTACK_H
