@@ -80,7 +80,7 @@ int eval(std::string post) {
                 number += post[i];
                 ++i;
             }
-            stack.push(std::stoi(number)); // Преобразуем строку в число и помещаем в стек
+            stack.push(std::stoi(number));
             --i;
         } else if (c != ' ') {
             int operand2 = stack.pop();
@@ -101,6 +101,5 @@ int eval(std::string post) {
             }
         }
     }
-
     return stack.pop();
 }
