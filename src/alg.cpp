@@ -3,7 +3,7 @@
 #include "tstack.h"
 
 int priority(char op) {
-    switch (op) {
+    switch(op) {
         case '*':
         case '/':
             return 2;
@@ -31,7 +31,7 @@ std::string infx2pstfx(std::string inf) {
             postfix += number + ' ';
             --i;
         } else {
-            switch (c) {
+            switch(c) {
                 case '(':
                     stack.push(c);
                     break;
@@ -84,7 +84,7 @@ int eval(std::string post) {
         } else if (c != ' ') {
             int operand2 = stack.pop();
             int operand1 = stack.pop();
-            switch (c) {
+            switch(c) {
                 case '+':
                     stack.push(operand1 + operand2);
                     break;

@@ -5,11 +5,11 @@
 
 template<typename T, int kSize>
 class TStack {
- private:
+ private :
      T data[kSize];
      int top = 0;
 
- public:
+ public :
      void push(const T &item) {
          if (top >= kSize)
              throw std::overflow_error("Full!");
