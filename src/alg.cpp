@@ -31,7 +31,7 @@ std::string infx2pstfx(std::string inf) {
             postfix += number + ' ';
             --i;
         } else {
-            switch(c) {
+            switch (c) {
                 case '(':
                     stack.push(c);
                     break;
